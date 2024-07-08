@@ -1,72 +1,135 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-*{
+
+* {
     padding: 0;
     top: 0;
     margin: 0;
     text-decoration: none;
 }
 
-body{
+body {
     font-family: "Roboto Mono", monospace;
     font-weight: bold;
 }
 
-:root{
+:root {
     --blue: #5CE1E6;
     --branco: #fff;
+    --grey: #2B2B2B;
 }
 
 /*===================navbar================*/
-.nav_bar{
+.nav_bar {
     display: flex;
     justify-content: center;
     padding: 15px 6px;
+    align-items: center;
+    position: relative;
+    z-index: 10;
 }
-.list_itens{
+
+.list_itens {
     display: flex;
     gap: 1.5rem;
+    transition: transform 0.3s ease;
 }
-.list_itens a{
+
+.list_itens a {
     font-size: 15px;
 }
-.list_itens a.active{
+
+.list_itens a.active {
     font-weight: bold;
     color: var(--blue);
 }
+
+.menu_icon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 768px) {
+    .list_itens {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        text-align: center;
+        background-color: var(--grey);
+        height: 30vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        border-end-end-radius: 10px;
+    }
+
+    .list_itens a {
+        padding: 10px 0;
+        color: var(--branco);
+    }
+
+    .menu_icon {
+        display: block;
+    }
+
+    .nav_bar.active .list_itens {
+        transform: translateY(0);
+    }
+}
+
 /*===================navbar================*/
 
 
+
+
 /*===================home================*/
-.home{
+.home {
     display: flex;
-    justify-content: center;
-    padding: 10px 20px;
+    justify-content: space-between;
     align-items: center;
+    padding: 10px 150px;
+    flex-wrap: wrap;
 }
-.aba_1{
+
+
+.aba_1 {
     display: flex;
     gap: 1rem;
     flex-direction: column;
 }
-.aba_1 h1{
+
+.aba_1 h1 {
     font-size: 45px;
 }
-.aba_1 p{
+
+.aba_1 p {
     font-size: 15px;
     font-weight: 450;
 }
+
 .aba_1 .btn_home {
     width: 60%;
     height: 50px;
     padding: .5rem;
-    border-radius: 20px;
-    background-color: var(--blue);
+    border-radius: 0px;
+    background-color: var(--grey);
     border: 2px solid transparent;
     font-weight: bold;
     font-size: 17px;
     cursor: pointer;
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
+    color: var(--branco);
+}
+
+.aba_1 .btn_home:hover {
+    color: var(--grey);
 }
 
 .aba_1 .btn_home::before {
@@ -76,12 +139,11 @@ body{
     right: 100%;
     bottom: 0;
     left: 0;
-    background-color: var(--branco); 
+    background-color: var(--branco);
     transition: right 0.5s ease;
-    z-index: 0; 
-    border: 2px solid var(--blue);
-    border-radius: 20px;
-   
+    z-index: 0;
+    border-radius: 0px;
+
 }
 
 .aba_1 .btn_home:hover::before {
@@ -90,47 +152,203 @@ body{
 
 .aba_1 .btn_home span {
     position: relative;
-    z-index: 1; 
+    z-index: 1;
 }
 
-.aba_2{
+.aba_2 {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
-.aba_2 img{
+
+.aba_2 img {
+    max-width: 100%;
+    height: auto;
     position: relative;
-    left: 5rem;
+    left: 10rem;
 }
-.aba_2 p{
+
+.aba_2 p {
     position: relative;
     top: -6rem;
-    left: 5rem;
+    left: 10rem;
 }
-.arrow_container{
+
+.arrow_container {
     display: flex;
     justify-content: center;
 }
-.arrow_container i{
+
+.arrow_container i {
     font-size: 18px;
     cursor: pointer;
     transition: all ease .5s;
 }
-.arrow_container i:hover{
+
+.arrow_container i:hover {
     transform: rotate(180deg);
     font-size: 20px;
 }
 
 .home_hr {
     border: 0;
-    height: 5px; 
+    height: 5px;
     background-color: var(--blue);
-    width: 70%; 
+    width: 70%;
     border-radius: 10px;
     transform: rotate(90deg);
     position: relative;
     right: 25rem;
     top: 25rem;
 }
+
+
+@media (max-width: 768px) {
+    .home {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .home .aba_1,
+    .home .aba_2 {
+        flex: none;
+        width: 100%;
+    }
+
+
+    .home .aba_1 {
+        justify-content: center;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        position: relative;
+        top: 2rem;
+    }
+
+    .home .aba_1 .btn_home {
+        justify-content: center;
+        align-items: center;
+        width: 150%;
+    }
+
+    .home .aba_1 h1 {
+        font-size: 2.5em;
+        white-space: nowrap;
+        text-align: center;
+        display: flex;
+        align-items: center;
+    }
+
+    .home .aba_1 p {
+        font-size: 1em;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    .home .btn_home {
+        margin-top: 20px;
+    }
+
+    .home .aba_2 {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .home .aba_1 h1 {
+        font-size: 2.2em;
+    }
+
+    .home .aba_1 p {
+        font-size: 0.8em;
+    }
+
+    .home .aba_1 .btn_home {
+        justify-content: center;
+        align-items: center;
+        width: 200%;
+    }
+}
+
 /*===================home================*/
+
+
+/*===================sobre================*/
+.sobre {
+    display: flex;
+    justify-content: center;
+    padding: 10px 100px;
+    align-items: center;
+    position: relative;
+    top: 15rem;
+    gap: 2rem;
+}
+
+.sobre .aba_1 {
+    background-color: #2B2B2B;
+    padding: 2rem;
+    width: 50%;
+    border-radius: 10px;
+    height: auto;
+}
+
+.sobre .aba_1 h1 {
+    color: var(--branco);
+}
+
+.sobre .aba_1 h1 span {
+    color: var(--blue);
+}
+
+.sobre .aba_1 p {
+    width: 100%;
+    color: var(--branco);
+    position: relative;
+}
+
+.sobre .img_container {
+    width: 100%;
+    position: relative;
+    right: 6rem;
+    display: flex;
+    justify-content: center;
+}
+
+.sobre .aba_2 .img_sobre {
+    width: 100%;
+    max-width: 500px;
+    cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+    .sobre {
+        flex-direction: column;
+        padding: 10px 20px;
+        top: 10rem;
+        gap: 1rem;
+    }
+
+    .sobre .aba_1,
+    .sobre .aba_2 {
+        width: 100%;
+    }
+
+    .sobre .img_container {
+        justify-content: center; 
+        position: relative;
+        right: 10rem;
+    }
+   
+    .sobre .aba_2 .img_sobre {
+        width: 70%;
+        transition: all ease .5s;
+    }
+    .sobre .aba_2 .img_sobre:hover{
+        transform: rotate(360deg);
+    }
+}
+
+/*===================sobre================*/
